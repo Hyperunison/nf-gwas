@@ -3,10 +3,20 @@ from src.Service.UCDMResolver import UCDMConvertedField
 
 
 def get_input_files(ucdm, parameters) -> Dict[str, str]:
+    if 'phenotype' in parameters.keys():
+        variables: List[str] = parameters['phenotype'].split(',')
+    else:
+        variables: List[str] = []
+
+    if 'is_binary' in parameters.keys():
+        is_binary = parameters['is_binary']
+    else:
+        is_binary = False
+
     return {
-        "phenotype.txt": build_phenotype(ucdm, parameters['variables']),
+        "phenotype.txt": build_phenotype(ucdm, variables),
         "nextflow.config": file_get_contents('nextflow.config'),
-        "nextflow-gwas.config": get_nextflow_config(parameters['variables'], parameters['isBinary'])
+        "nextflow-gwas.config": get_nextflow_config(variables, is_binary)
     }
 
 

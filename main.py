@@ -1,6 +1,4 @@
 from typing import List, Dict
-from src.Service.UCDMResolver import UCDMConvertedField
-
 
 def get_input_files(ucdm, parameters) -> Dict[str, str]:
     if 'phenotype' in parameters.keys():
@@ -63,7 +61,7 @@ def get_nextflow_config(variables: List[str], is_binary: bool) -> str:
     return config
 
 
-def build_phenotype(ucdm: List[Dict[str, UCDMConvertedField]], variables: List[str]) -> str:
+def build_phenotype(ucdm: List[Dict[str, str]], variables: List[str]) -> str:
     if len(ucdm) == 0:
         return ''
     content = "FID IID " + (" ".join(variables)) + "\n"

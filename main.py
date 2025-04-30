@@ -69,7 +69,7 @@ def build_phenotype(ucdm: List[Dict[str, str]], variables: List[str]) -> str:
     for row in ucdm:
         content += "{} {}".format(i, i)
         for key in variables:
-            content += " " + convert_value(row[key].export_value)
+            content += " " + convert_value(row[key])
         content += "\n"
         i += 1
 

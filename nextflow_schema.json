@@ -23,7 +23,7 @@
           "fa_icon": "fas fa-folder-open"
         }
       },
-      "required": ["outdir"]
+      "required": ["outdir", "phenotype"]
     }
   },
   "allOf": [{"$ref": "#/definitions/required_input_output_options"}]
